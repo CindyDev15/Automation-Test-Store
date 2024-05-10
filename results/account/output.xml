@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.0 on win32)" generated="20240509 23:05:11.683" rpa="false" schemaversion="4">
+<suite id="s1" name="Account" source="d:\CURRENT_SEMESTER\Auto Testing\Auto test - CK\AutomationTestStore\tests\account.robot">
+<test id="s1-t1" name="TC1: Open browser" line="14">
+<kw name="Log To Console" library="BuiltIn" type="SETUP">
+<arg>Opening my browser</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240509 23:05:12.062" endtime="20240509 23:05:12.062"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>"test"</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240509 23:05:12.063" endtime="20240509 23:05:12.065"/>
+</kw>
+<kw name="Closing my browser" library="common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240509 23:05:12.067" endtime="20240509 23:05:12.067"/>
+</kw>
+<status status="PASS" starttime="20240509 23:05:12.066" endtime="20240509 23:05:12.067"/>
+</kw>
+<status status="PASS" starttime="20240509 23:05:12.061" endtime="20240509 23:05:12.068"/>
+</test>
+<doc>Module1 - Shop page</doc>
+<status status="PASS" starttime="20240509 23:05:11.689" endtime="20240509 23:05:12.072"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Account">Account</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
