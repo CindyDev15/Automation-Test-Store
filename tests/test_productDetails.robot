@@ -5,6 +5,7 @@ Resource          ../resources/common.robot
 Resource           ../resources/productDetails/productDetails.robot
 Test Teardown     Closing my browser
 Test Setup        Opening my browser
+Variables         ../variables/loginPage.robot
 
 *** Variables ***
 ${BROWSER}        Chrome
