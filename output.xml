@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.0 on win32)" generated="20240512 18:54:17.091" rpa="false" schemaversion="4">
+<suite id="s1" name="Test Register" source="d:\CURRENT_SEMESTER\Auto Testing\Auto test - CK\AutomationTestStore\tests\account\test_register.robot">
+<test id="s1-t1" name="TC28 - Register fail then sucess (existed email)" line="220">
+<kw name="Opening my browser" library="common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL_HOME}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240512 18:54:18.060" level="INFO">Opening browser 'Chrome' to base url 'https://automationteststore.com/'.</msg>
+<status status="PASS" starttime="20240512 18:54:18.059" endtime="20240512 18:54:35.717"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${URL_HOME}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240512 18:54:35.724" level="INFO">Current location is 'https://automationteststore.com/'.</msg>
+<status status="PASS" starttime="20240512 18:54:35.717" endtime="20240512 18:54:35.724"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240512 18:54:35.725" endtime="20240512 18:54:35.757"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:18.059" endtime="20240512 18:54:35.757"/>
+</kw>
+<kw name="Enter page" library="common">
+<arg>${REGISTER_LOGIN_PAGE}</arg>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240512 18:54:35.760" level="INFO">Opening url 'https://automationteststore.com/index.php?rt=account/login'</msg>
+<status status="PASS" starttime="20240512 18:54:35.759" endtime="20240512 18:54:36.495"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${url}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240512 18:54:36.505" level="INFO">Current location is 'https://automationteststore.com/index.php?rt=account/login'.</msg>
+<status status="PASS" starttime="20240512 18:54:36.496" endtime="20240512 18:54:36.505"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:35.758" endtime="20240512 18:54:36.505"/>
+</kw>
+<kw name="Choose register option &amp; enter form" library="register">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${REGISTER_BTN}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240512 18:54:36.521" level="INFO">Current page contains element '//*[@id="accountFrm"]/fieldset/button'.</msg>
+<status status="PASS" starttime="20240512 18:54:36.507" endtime="20240512 18:54:36.522"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${REGISTER_BTN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:36.523" level="INFO">Clicking button '//*[@id="accountFrm"]/fieldset/button'.</msg>
+<status status="PASS" starttime="20240512 18:54:36.523" endtime="20240512 18:54:38.659"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Location Should Be</arg>
+<arg>${REGISTER_URL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240512 18:54:38.668" level="INFO">Current location is 'https://automationteststore.com/index.php?rt=account/create'.</msg>
+<status status="PASS" starttime="20240512 18:54:38.661" endtime="20240512 18:54:38.668"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:38.659" endtime="20240512 18:54:38.668"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:36.506" endtime="20240512 18:54:38.668"/>
+</kw>
+<kw name="Register with existed email" library="register">
+<arg>shopper3@gmail.com</arg>
+<arg>janetdoe_shopper113</arg>
+<kw name="Create List" library="BuiltIn">
+<var>${data}</var>
+<arg>Tom</arg>
+<arg>Doe</arg>
+<arg>${email}</arg>
+<arg>1234567890</arg>
+<arg>1234567890</arg>
+<arg>ABC Company</arg>
+<arg>123 Main Street</arg>
+<arg>345 Second Street</arg>
+<arg>230</arg>
+<arg>3780</arg>
+<arg>Ho Chi Minh</arg>
+<arg>SW1A 1AA</arg>
+<arg>${login_name}</arg>
+<arg>password123</arg>
+<arg>password123</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20240512 18:54:38.671" level="INFO">${data} = ['Tom', 'Doe', 'shopper3@gmail.com', '1234567890', '1234567890', 'ABC Company', '123 Main Street', '345 Second Street', '230', '3780', 'Ho Chi Minh', 'SW1A 1AA', 'janetdoe_shopper113', 'password123', ...</msg>
+<status status="PASS" starttime="20240512 18:54:38.670" endtime="20240512 18:54:38.671"/>
+</kw>
+<kw name="Fill input to register form" library="register">
+<arg>${data}</arg>
+<doc>Fill the register form with the data list</doc>
+<kw name="Get From List" library="Collections">
+<var>${first_name}</var>
+<arg>${data_list}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.673" level="INFO">${first_name} = Tom</msg>
+<status status="PASS" starttime="20240512 18:54:38.672" endtime="20240512 18:54:38.673"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${last_name}</var>
+<arg>${data_list}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.673" level="INFO">${last_name} = Doe</msg>
+<status status="PASS" starttime="20240512 18:54:38.673" endtime="20240512 18:54:38.674"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${email}</var>
+<arg>${data_list}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.674" level="INFO">${email} = shopper3@gmail.com</msg>
+<status status="PASS" starttime="20240512 18:54:38.674" endtime="20240512 18:54:38.674"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${phone}</var>
+<arg>${data_list}</arg>
+<arg>3</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.675" level="INFO">${phone} = 1234567890</msg>
+<status status="PASS" starttime="20240512 18:54:38.674" endtime="20240512 18:54:38.675"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${fax}</var>
+<arg>${data_list}</arg>
+<arg>4</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.676" level="INFO">${fax} = 1234567890</msg>
+<status status="PASS" starttime="20240512 18:54:38.676" endtime="20240512 18:54:38.676"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${company}</var>
+<arg>${data_list}</arg>
+<arg>5</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.677" level="INFO">${company} = ABC Company</msg>
+<status status="PASS" starttime="20240512 18:54:38.676" endtime="20240512 18:54:38.677"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${address1}</var>
+<arg>${data_list}</arg>
+<arg>6</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.677" level="INFO">${address1} = 123 Main Street</msg>
+<status status="PASS" starttime="20240512 18:54:38.677" endtime="20240512 18:54:38.678"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${address2}</var>
+<arg>${data_list}</arg>
+<arg>7</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.678" level="INFO">${address2} = 345 Second Street</msg>
+<status status="PASS" starttime="20240512 18:54:38.678" endtime="20240512 18:54:38.679"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${country}</var>
+<arg>${data_list}</arg>
+<arg>8</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.679" level="INFO">${country} = 230</msg>
+<status status="PASS" starttime="20240512 18:54:38.679" endtime="20240512 18:54:38.679"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${region}</var>
+<arg>${data_list}</arg>
+<arg>9</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.680" level="INFO">${region} = 3780</msg>
+<status status="PASS" starttime="20240512 18:54:38.680" endtime="20240512 18:54:38.680"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${city}</var>
+<arg>${data_list}</arg>
+<arg>10</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.681" level="INFO">${city} = Ho Chi Minh</msg>
+<status status="PASS" starttime="20240512 18:54:38.680" endtime="20240512 18:54:38.681"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${postcode}</var>
+<arg>${data_list}</arg>
+<arg>11</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.682" level="INFO">${postcode} = SW1A 1AA</msg>
+<status status="PASS" starttime="20240512 18:54:38.681" endtime="20240512 18:54:38.682"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${login_name}</var>
+<arg>${data_list}</arg>
+<arg>12</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.682" level="INFO">${login_name} = janetdoe_shopper113</msg>
+<status status="PASS" starttime="20240512 18:54:38.682" endtime="20240512 18:54:38.682"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${password}</var>
+<arg>${data_list}</arg>
+<arg>13</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.683" level="INFO">${password} = password123</msg>
+<status status="PASS" starttime="20240512 18:54:38.682" endtime="20240512 18:54:38.683"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${confirm_password}</var>
+<arg>${data_list}</arg>
+<arg>14</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20240512 18:54:38.685" level="INFO">${confirm_password} = password123</msg>
+<status status="PASS" starttime="20240512 18:54:38.684" endtime="20240512 18:54:38.685"/>
+</kw>
+<kw name="Check if data empty" library="register">
+<var>${is_empty_region}</var>
+<arg>${region}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>False</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240512 18:54:38.686" level="INFO">${res} = False</msg>
+<status status="PASS" starttime="20240512 18:54:38.685" endtime="20240512 18:54:38.686"/>
+</kw>
+<if>
+<branch type="IF" condition="$data == ''">
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.692" endtime="20240512 18:54:38.692"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.687" endtime="20240512 18:54:38.692"/>
+</branch>
+<branch type="ELSE IF" condition="$data == &quot;&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.693" endtime="20240512 18:54:38.693"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.692" endtime="20240512 18:54:38.693"/>
+</branch>
+<status status="PASS" starttime="20240512 18:54:38.686" endtime="20240512 18:54:38.693"/>
+</if>
+<kw name="Log To Console" library="BuiltIn">
+<arg>res: ${res}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 18:54:38.693" endtime="20240512 18:54:38.694"/>
+</kw>
+<return>
+<value>${res}</value>
+<status status="PASS" starttime="20240512 18:54:38.695" endtime="20240512 18:54:38.695"/>
+</return>
+<msg timestamp="20240512 18:54:38.695" level="INFO">${is_empty_region} = False</msg>
+<status status="PASS" starttime="20240512 18:54:38.685" endtime="20240512 18:54:38.695"/>
+</kw>
+<kw name="Check if data empty" library="register">
+<var>${is_empty_country}</var>
+<arg>${country}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>False</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240512 18:54:38.697" level="INFO">${res} = False</msg>
+<status status="PASS" starttime="20240512 18:54:38.696" endtime="20240512 18:54:38.697"/>
+</kw>
+<if>
+<branch type="IF" condition="$data == ''">
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.698" endtime="20240512 18:54:38.698"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.697" endtime="20240512 18:54:38.698"/>
+</branch>
+<branch type="ELSE IF" condition="$data == &quot;&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${res}</var>
+<arg>True</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.698" endtime="20240512 18:54:38.699"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.698" endtime="20240512 18:54:38.699"/>
+</branch>
+<status status="PASS" starttime="20240512 18:54:38.697" endtime="20240512 18:54:38.699"/>
+</if>
+<kw name="Log To Console" library="BuiltIn">
+<arg>res: ${res}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 18:54:38.699" endtime="20240512 18:54:38.700"/>
+</kw>
+<return>
+<value>${res}</value>
+<status status="PASS" starttime="20240512 18:54:38.700" endtime="20240512 18:54:38.700"/>
+</return>
+<msg timestamp="20240512 18:54:38.701" level="INFO">${is_empty_country} = False</msg>
+<status status="PASS" starttime="20240512 18:54:38.696" endtime="20240512 18:54:38.701"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_country == &quot;True&quot;">
+<kw name="Log To Console" library="BuiltIn">
+<arg>country is empty</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.702" endtime="20240512 18:54:38.702"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${country}</var>
+<arg>FALSE</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.702" endtime="20240512 18:54:38.702"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.701" endtime="20240512 18:54:38.702"/>
+</branch>
+<branch type="ELSE">
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${country}</var>
+<arg>${country}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20240512 18:54:38.704" level="INFO">${country} = 230</msg>
+<status status="PASS" starttime="20240512 18:54:38.703" endtime="20240512 18:54:38.704"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:38.702" endtime="20240512 18:54:38.704"/>
+</branch>
+<status status="PASS" starttime="20240512 18:54:38.701" endtime="20240512 18:54:38.704"/>
+</if>
+<if>
+<branch type="IF" condition="$is_empty_region == &quot;True&quot;">
+<kw name="Log To Console" library="BuiltIn">
+<arg>region is empty</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.705" endtime="20240512 18:54:38.705"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${region}</var>
+<arg>FALSE</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20240512 18:54:38.705" endtime="20240512 18:54:38.706"/>
+</kw>
+<status status="NOT RUN" starttime="20240512 18:54:38.705" endtime="20240512 18:54:38.706"/>
+</branch>
+<branch type="ELSE">
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${region}</var>
+<arg>${region}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20240512 18:54:38.708" level="INFO">${region} = 3780</msg>
+<status status="PASS" starttime="20240512 18:54:38.707" endtime="20240512 18:54:38.708"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:38.706" endtime="20240512 18:54:38.708"/>
+</branch>
+<status status="PASS" starttime="20240512 18:54:38.704" endtime="20240512 18:54:38.708"/>
+</if>
+<kw name="Log To Console" library="BuiltIn">
+<arg>region: ${region}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 18:54:38.708" endtime="20240512 18:54:38.710"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>country: ${country}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 18:54:38.710" endtime="20240512 18:54:38.711"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_first_name}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:38.711" endtime="20240512 18:54:39.024"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_first_name}</arg>
+<arg>${first_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:39.028" level="INFO">Typing text 'Tom' into text field '//*[@id="AccountFrm_firstname"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:39.025" endtime="20240512 18:54:39.191"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_last_name}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:39.191" endtime="20240512 18:54:39.515"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_last_name}</arg>
+<arg>${last_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:39.518" level="INFO">Typing text 'Doe' into text field '//*[@id="AccountFrm_lastname"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:39.516" endtime="20240512 18:54:39.687"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_email}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:39.688" endtime="20240512 18:54:39.963"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_email}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:39.964" level="INFO">Typing text 'shopper3@gmail.com' into text field '//*[@id="AccountFrm_email"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:39.963" endtime="20240512 18:54:40.129"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_telephone}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:40.129" endtime="20240512 18:54:40.405"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_telephone}</arg>
+<arg>${phone}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:40.408" level="INFO">Typing text '1234567890' into text field '//*[@id="AccountFrm_telephone"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:40.406" endtime="20240512 18:54:40.549"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_fax}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:40.550" endtime="20240512 18:54:40.826"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_fax}</arg>
+<arg>${fax}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:40.829" level="INFO">Typing text '1234567890' into text field '//*[@id="AccountFrm_fax"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:40.827" endtime="20240512 18:54:40.930"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_company}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:40.930" endtime="20240512 18:54:41.205"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_company}</arg>
+<arg>${company}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:41.206" level="INFO">Typing text 'ABC Company' into text field '//*[@id="AccountFrm_company"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:41.205" endtime="20240512 18:54:41.328"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_address_1}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:41.329" endtime="20240512 18:54:41.603"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_address_1}</arg>
+<arg>${address1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:41.604" level="INFO">Typing text '123 Main Street' into text field '//*[@id="AccountFrm_address_1"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:41.604" endtime="20240512 18:54:41.725"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_address_2}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:41.725" endtime="20240512 18:54:41.999"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_address_2}</arg>
+<arg>${address2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:42.001" level="INFO">Typing text '345 Second Street' into text field '//*[@id="AccountFrm_address_2"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:41.999" endtime="20240512 18:54:42.115"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_city}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:42.115" endtime="20240512 18:54:42.388"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_city}</arg>
+<arg>${city}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:42.390" level="INFO">Typing text 'Ho Chi Minh' into text field '//*[@id="AccountFrm_city"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:42.389" endtime="20240512 18:54:42.547"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_zip_code}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:42.547" endtime="20240512 18:54:42.825"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_zip_code}</arg>
+<arg>${postcode}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:42.829" level="INFO">Typing text 'SW1A 1AA' into text field '//*[@id="AccountFrm_postcode"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:42.826" endtime="20240512 18:54:43.002"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${select_country}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:43.002" endtime="20240512 18:54:43.278"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${select_country}</arg>
+<arg>${country}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20240512 18:54:43.280" level="INFO">Selecting options from selection list '//*[@id="AccountFrm_country_id"]' by value 230.</msg>
+<status status="PASS" starttime="20240512 18:54:43.279" endtime="20240512 18:54:43.390"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${select_region}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:43.391" endtime="20240512 18:54:43.672"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${select_region}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240512 18:54:43.674" endtime="20240512 18:54:43.718"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${select_region}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20240512 18:54:43.719" endtime="20240512 18:54:43.769"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_country == &quot;False&quot;">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Page Should Contain Element</arg>
+<arg>//*[@id="AccountFrm_zone_id"]/option[@value='3780']</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//*[@id="AccountFrm_zone_id"]/option[@value='3780']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240512 18:54:43.888" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240512 18:54:43.889" level="FAIL">Page should have contained element '//*[@id="AccountFrm_zone_id"]/option[@value='3780']' but did not.</msg>
+<status status="FAIL" starttime="20240512 18:54:43.771" endtime="20240512 18:54:43.891"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//*[@id="AccountFrm_zone_id"]/option[@value='3780']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240512 18:54:45.910" level="INFO">Current page contains element '//*[@id="AccountFrm_zone_id"]/option[@value='3780']'.</msg>
+<status status="PASS" starttime="20240512 18:54:45.893" endtime="20240512 18:54:45.911"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:43.771" endtime="20240512 18:54:45.911"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>${select_region}</arg>
+<arg>${region}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20240512 18:54:45.912" level="INFO">Selecting options from selection list '//*[@id="AccountFrm_zone_id"]' by value 3780.</msg>
+<status status="PASS" starttime="20240512 18:54:45.911" endtime="20240512 18:54:46.012"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:43.769" endtime="20240512 18:54:46.012"/>
+</branch>
+<status status="PASS" starttime="20240512 18:54:43.769" endtime="20240512 18:54:46.012"/>
+</if>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_login_name}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:46.013" endtime="20240512 18:54:46.290"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_login_name}</arg>
+<arg>${login_name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:46.292" level="INFO">Typing text 'janetdoe_shopper113' into text field '//*[@id="AccountFrm_loginname"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:46.290" endtime="20240512 18:54:46.397"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_password}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:46.397" endtime="20240512 18:54:46.671"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:46.674" level="INFO">Typing text 'password123' into text field '//*[@id="AccountFrm_password"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:46.672" endtime="20240512 18:54:46.771"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_confirm_password}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:46.772" endtime="20240512 18:54:47.047"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_confirm_password}</arg>
+<arg>${confirm_password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:47.050" level="INFO">Typing text 'password123' into text field '//*[@id="AccountFrm_confirm"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:47.047" endtime="20240512 18:54:47.179"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:38.672" endtime="20240512 18:54:47.179"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${checkbox_agree_policy}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:47.179" endtime="20240512 18:54:47.451"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${checkbox_agree_policy}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:47.453" level="INFO">Clicking button '//*[@id="AccountFrm_agree"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:47.452" endtime="20240512 18:54:47.505"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${btn_register_submit}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:47.507" endtime="20240512 18:54:47.791"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btn_register_submit}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:47.793" level="INFO">Clicking button '//*[@id="AccountFrm"]/div[5]/div/div/button'.</msg>
+<status status="PASS" starttime="20240512 18:54:47.792" endtime="20240512 18:54:49.322"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${error_message}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20240512 18:54:49.322" endtime="20240512 18:54:49.378"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${error_message}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240512 18:54:49.400" level="INFO">Current page contains element '//div[@id='maincontainer']/div[@class='container-fluid']/div[@class='col-md-12 col-xs-12 mt20']/div/div[@class='alert alert-error alert-danger']'.</msg>
+<status status="PASS" starttime="20240512 18:54:49.379" endtime="20240512 18:54:49.400"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${error_message_text}</var>
+<arg>${error_message}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:49.475" level="INFO">${error_message_text} = ×
+Error: E-Mail Address is already registered!</msg>
+<status status="PASS" starttime="20240512 18:54:49.401" endtime="20240512 18:54:49.476"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${error_message_text}</var>
+<arg>${error_message_text}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240512 18:54:49.478" level="INFO">${error_message_text} = ×
+error: e-mail address is already registered!</msg>
+<status status="PASS" starttime="20240512 18:54:49.476" endtime="20240512 18:54:49.479"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${msg}</var>
+<arg>e-mail address is already registered</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240512 18:54:49.481" level="INFO">${msg} = e-mail address is already registered</msg>
+<status status="PASS" starttime="20240512 18:54:49.480" endtime="20240512 18:54:49.481"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${error_message_text}</arg>
+<arg>${msg}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20240512 18:54:49.482" endtime="20240512 18:54:49.483"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:38.669" endtime="20240512 18:54:49.483"/>
+</kw>
+<kw name="Fix email then register successfully" library="register">
+<arg>${new_email}</arg>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pw_value}</var>
+<arg>${input_password}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:49.556" level="INFO">${pw_value} = </msg>
+<status status="PASS" starttime="20240512 18:54:49.486" endtime="20240512 18:54:49.556"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${cpw_value}</var>
+<arg>${input_confirm_password}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:49.643" level="INFO">${cpw_value} = </msg>
+<status status="PASS" starttime="20240512 18:54:49.558" endtime="20240512 18:54:49.644"/>
+</kw>
+<kw name="Should Be Empty" library="BuiltIn">
+<arg>${pw_value}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<msg timestamp="20240512 18:54:49.647" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20240512 18:54:49.645" endtime="20240512 18:54:49.648"/>
+</kw>
+<kw name="Should Be Empty" library="BuiltIn">
+<arg>${cpw_value}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<msg timestamp="20240512 18:54:49.652" level="INFO">Length is 0</msg>
+<status status="PASS" starttime="20240512 18:54:49.649" endtime="20240512 18:54:49.652"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_email}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:49.654" endtime="20240512 18:54:49.997"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_email}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:49.999" level="INFO">Typing text 'janetdoe_shopper_100@gmail.com' into text field '//*[@id="AccountFrm_email"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:49.998" endtime="20240512 18:54:50.418"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_password}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:50.418" endtime="20240512 18:54:50.712"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_password}</arg>
+<arg>password123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:50.716" level="INFO">Typing text 'password123' into text field '//*[@id="AccountFrm_password"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:50.713" endtime="20240512 18:54:51.073"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${input_confirm_password}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:51.073" endtime="20240512 18:54:51.365"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_confirm_password}</arg>
+<arg>password123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:51.367" level="INFO">Typing text 'password123' into text field '//*[@id="AccountFrm_confirm"]'.</msg>
+<status status="PASS" starttime="20240512 18:54:51.365" endtime="20240512 18:54:51.657"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${btn_register_submit}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20240512 18:54:51.658" endtime="20240512 18:54:51.958"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btn_register_submit}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240512 18:54:51.961" level="INFO">Clicking button '//*[@id="AccountFrm"]/div[5]/div/div/button'.</msg>
+<status status="PASS" starttime="20240512 18:54:51.959" endtime="20240512 18:54:54.431"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Location Should Be</arg>
+<arg>${REGISTER_SUCCESS_URL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_SUCCESS_URL}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240512 18:54:54.442" level="INFO">Current location is 'https://automationteststore.com/index.php?rt=account/success'.</msg>
+<status status="PASS" starttime="20240512 18:54:54.432" endtime="20240512 18:54:54.443"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:54.432" endtime="20240512 18:54:54.443"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Your Account Has Been Created!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20240512 18:54:54.468" level="INFO">Current page contains text 'Your Account Has Been Created!'.</msg>
+<status status="PASS" starttime="20240512 18:54:54.443" endtime="20240512 18:54:54.468"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:49.485" endtime="20240512 18:54:54.469"/>
+</kw>
+<kw name="Closing my browser" library="common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240512 18:54:54.470" endtime="20240512 18:54:56.664"/>
+</kw>
+<status status="PASS" starttime="20240512 18:54:54.469" endtime="20240512 18:54:56.664"/>
+</kw>
+<doc>Register with existed email</doc>
+<tag>Register</tag>
+<status status="PASS" starttime="20240512 18:54:18.057" endtime="20240512 18:54:56.665"/>
+</test>
+<doc>Module1 - Shop page</doc>
+<status status="PASS" starttime="20240512 18:54:17.097" endtime="20240512 18:54:56.672"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Register</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test Register">Test Register</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
