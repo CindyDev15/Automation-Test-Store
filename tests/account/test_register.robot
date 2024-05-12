@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Module1 - Shop page 
+Documentation     Module - account/register
 Library           SeleniumLibrary
 Resource          ../../resources/common.robot
 Resource          ../../resources/account/register.robot

@@ -5,7 +5,6 @@ Library           BuiltIn
 Library           OperatingSystem
 Library           Collections
 Library           String
-Library    RPA.PDF
 Resource          ../../resources/common.robot
 Resource         ../../variables/register_page.robot
 
