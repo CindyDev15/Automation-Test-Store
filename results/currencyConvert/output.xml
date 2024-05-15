@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.10.9 on win32)" generated="2024-05-14T18:49:03.176562" rpa="false" schemaversion="5">
+<suite id="s1" name="test currencyConvert" source="D:\HK6\AutoTest\AutomationTestStore\tests\test_currencyConvert.robot">
+<test id="s1-t1" name="Change usd to pound to euro to usd" line="10">
+<kw name="Opening my browser" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:03.320736" level="INFO">Opening browser 'Chrome' to base url 'https://automationteststore.com/'.</msg>
+<arg>${URL_HOME}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-05-14T18:49:03.320736" elapsed="8.223423"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:11.551694" level="INFO">Current location is 'https://automationteststore.com/'.</msg>
+<arg>${URL_HOME}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.545781" elapsed="0.007031"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.553078" elapsed="0.025584"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:03.320736" elapsed="8.258930"/>
+</kw>
+<kw name="Change usd to pound to euro to usd" owner="currencyConvert">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:11.609402" level="INFO">${text_now} = $</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.580662" elapsed="0.028740"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_usd}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.610398" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:11.628803" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_change1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.611410" elapsed="0.017393"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:11.629962" level="INFO">${item_usd} = 38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_usd.replace("$", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.629844" elapsed="0.000118"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:11.629962" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.629962" elapsed="0.295949"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:11.926991" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[2]/a'.</msg>
+<arg>${pound_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:11.925911" elapsed="0.745741"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:12.694503" level="INFO">${text_change} = £</msg>
+<var>${text_change}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.672651" elapsed="0.021852"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${text_change}</arg>
+<arg>${currency_symbol_pound}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.694503" elapsed="0.001000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:12.711280" level="INFO">${item_pound} = £30.54</msg>
+<var>${item_pound}</var>
+<arg>${item_change1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.696011" elapsed="0.015269"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:12.712295" level="INFO">${item_pound} = 30.54</msg>
+<var>${item_pound}</var>
+<arg>${item_pound.replace("£", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.711280" elapsed="0.001015"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:12.713279" level="INFO">${item_usd_check} = 38.5</msg>
+<var>${item_usd_check}</var>
+<arg>float(${item_pound}) * float(${item_usd}) / float(${item_pound})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.712295" elapsed="0.000984"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-05-14T18:49:12.713279" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;</msg>
+<arg>${item_usd}</arg>
+<arg>${item_usd_check}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.713279" elapsed="0.000998"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:12.714277" level="INFO">Clicking element 'xpath=/html/body/div/div[2]/div/div/section[2]/div/div/div/div[4]/div[2]/a/img'.</msg>
+<arg>xpath=/html/body/div/div[2]/div/div/section[2]/div/div/div/div[4]/div[2]/a/img</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:12.714277" elapsed="1.255323"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:13.988982" level="INFO">${item_pound1} = £30.54</msg>
+<var>${item_pound1}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:13.969600" elapsed="0.019382"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:13.989930" level="INFO">${item_pound1} = 30.54</msg>
+<var>${item_pound1}</var>
+<arg>${item_pound1.replace("£", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:13.988982" elapsed="0.000948"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:14.002068" level="INFO">${text_now} = £</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:13.989930" elapsed="0.012138"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_pound}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:14.002068" elapsed="0.001000"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:14.003068" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:14.003068" elapsed="0.282823"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:14.287904" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[1]/a'.</msg>
+<arg>${euro_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:14.286904" elapsed="0.971033"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:15.282853" level="INFO">${text_now} = €</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.257937" elapsed="0.024916"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_euro}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.282853" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:15.306688" level="INFO">${item_euro1} = 36.13€</msg>
+<var>${item_euro1}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.282853" elapsed="0.023835"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:15.307689" level="INFO">${item_euro1} = 36.13€</msg>
+<var>${item_euro1}</var>
+<arg>${item_euro1}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.307689" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:15.307689" level="INFO">${currency_symbol} = €</msg>
+<var>${currency_symbol}</var>
+<arg>'''${item_euro1}'''[-1]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.307689" elapsed="0.001061"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol}</arg>
+<arg>${currency_symbol_euro}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.308750" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:15.325983" level="INFO">${text_now} = €</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.308750" elapsed="0.017233"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_euro}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.325983" elapsed="0.000000"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:15.325983" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.325983" elapsed="0.277646"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:15.605628" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[3]/a'.</msg>
+<arg>${usd_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:15.604626" elapsed="0.964146"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:16.594895" level="INFO">${text_now} = $</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.568772" elapsed="0.026123"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_usd}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.595896" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:16.616737" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.596973" elapsed="0.020759"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:16.617732" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_usd}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.617732" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:16.621725" level="INFO">${currency_symbol} = $</msg>
+<var>${currency_symbol}</var>
+<arg>'''${item_usd}'''[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.618668" elapsed="0.003057"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol}</arg>
+<arg>${currency_symbol_usd}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.621725" elapsed="0.000971"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:11.579666" elapsed="5.043030"/>
+</kw>
+<kw name="Closing my browser" owner="common" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-05-14T18:49:16.623673" elapsed="2.117834"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:16.622696" elapsed="2.118811"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:03.320736" elapsed="15.420771"/>
+</test>
+<test id="s1-t2" name="Change usd to euro to pound to usd" line="13">
+<kw name="Opening my browser" owner="common" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:18.747285" level="INFO">Opening browser 'Chrome' to base url 'https://automationteststore.com/'.</msg>
+<arg>${URL_HOME}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-05-14T18:49:18.746267" elapsed="29.796587"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:48.552179" level="INFO">Current location is 'https://automationteststore.com/'.</msg>
+<arg>${URL_HOME}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.543912" elapsed="0.008267"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.552179" elapsed="0.025629"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:18.741507" elapsed="29.837301"/>
+</kw>
+<kw name="Change usd to euro to pound to usd" owner="currencyConvert">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:48.614464" level="INFO">${text_now} = $</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.580811" elapsed="0.033653"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_usd}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.615972" elapsed="0.001013"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:48.642002" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_change1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.616985" elapsed="0.026107"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:48.644549" level="INFO">${item_usd} = 38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_usd.replace("$", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.643536" elapsed="0.001013"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:48.644549" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.644549" elapsed="0.305492"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:48.952048" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[1]/a'.</msg>
+<arg>${euro_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:48.951069" elapsed="1.509929"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:50.478905" level="INFO">${text_change} = €</msg>
+<var>${text_change}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.462111" elapsed="0.016794"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${text_change}</arg>
+<arg>${currency_symbol_euro}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.478905" elapsed="0.000998"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:50.494298" level="INFO">${item_euro} = 36.13€</msg>
+<var>${item_euro}</var>
+<arg>${item_change1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.479903" elapsed="0.014395"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:50.495828" level="INFO">${item_euro} = 36.13</msg>
+<var>${item_euro}</var>
+<arg>${item_euro.replace("€", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.494298" elapsed="0.001599"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:50.495897" level="INFO">${item_usd_check} = 38.5</msg>
+<var>${item_usd_check}</var>
+<arg>float(${item_euro}) * float(${item_usd}) / float(${item_euro})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.495897" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-05-14T18:49:50.496845" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${item_usd_check}</arg>
+<arg>${item_usd}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.496845" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:50.497847" level="INFO">Clicking element 'xpath=/html/body/div/div[2]/div/div/section[2]/div/div/div/div[4]/div[2]/a/img'.</msg>
+<arg>xpath=/html/body/div/div[2]/div/div/section[2]/div/div/div/div[4]/div[2]/a/img</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:50.497847" elapsed="2.501919"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:53.027396" level="INFO">${item_euro1} = 36.13€</msg>
+<var>${item_euro1}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:52.999766" elapsed="0.027630"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:53.028410" level="INFO">${item_euro1} = 36.13</msg>
+<var>${item_euro1}</var>
+<arg>${item_euro1.replace("€", "").replace(",", "")}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:53.028410" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${item_euro}</arg>
+<arg>${item_euro1}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2024-05-14T18:49:53.029410" elapsed="0.000998"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:53.031408" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:53.030408" elapsed="0.274676"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:53.307400" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[2]/a'.</msg>
+<arg>${pound_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:53.306130" elapsed="1.291174"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:54.616079" level="INFO">${text_change} = £</msg>
+<var>${text_change}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.598317" elapsed="0.017762"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${text_change}</arg>
+<arg>${currency_symbol_pound}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.616079" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:54.638533" level="INFO">${item_pound} = £30.54</msg>
+<var>${item_pound}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.616079" elapsed="0.022454"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:54.639545" level="INFO">${item_pound} = £30.54</msg>
+<var>${item_pound}</var>
+<arg>${item_pound}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.639545" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:54.640543" level="INFO">${currency_symbol} = £</msg>
+<var>${currency_symbol}</var>
+<arg>'''${item_pound}'''[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.639545" elapsed="0.000998"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol}</arg>
+<arg>${currency_symbol_pound}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.640543" elapsed="0.000000"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:54.641542" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div/header/div[2]/div/div[2]'.</msg>
+<arg>xpath=/html/body/div/header/div[2]/div/div[2]</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.641542" elapsed="0.287439"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:54.928981" level="INFO">Clicking element 'xpath=/html/body/div/header/div[2]/div/div[2]/ul/li/ul/li[3]/a'.</msg>
+<arg>${usd_option_xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:54.928981" elapsed="1.194774"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:56.142146" level="INFO">${text_now} = $</msg>
+<var>${text_now}</var>
+<arg>${item_change}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.123755" elapsed="0.019392"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol_usd}</arg>
+<arg>${text_now}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.143147" elapsed="0.000000"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-05-14T18:49:56.157827" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>xpath=/html/body/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div[1]/div/div</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.144146" elapsed="0.013681"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-14T18:49:56.158847" level="INFO">${item_usd} = $38.50</msg>
+<var>${item_usd}</var>
+<arg>${item_usd}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.158847" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-05-14T18:49:56.159843" level="INFO">${currency_symbol} = $</msg>
+<var>${currency_symbol}</var>
+<arg>'''${item_usd}'''[0]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.158847" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${currency_symbol}</arg>
+<arg>${currency_symbol_usd}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.159843" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:48.579809" elapsed="7.581035"/>
+</kw>
+<kw name="Closing my browser" owner="common" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-05-14T18:49:56.160844" elapsed="2.125194"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:56.160844" elapsed="2.125194"/>
+</kw>
+<status status="PASS" start="2024-05-14T18:49:18.741507" elapsed="39.544531"/>
+</test>
+<doc>Module1 - Shop page</doc>
+<status status="PASS" start="2024-05-14T18:49:03.189000" elapsed="55.097038"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="test currencyConvert">test currencyConvert</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

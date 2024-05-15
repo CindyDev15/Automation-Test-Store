@@ -17,6 +17,14 @@ ${email_input}    //*[@id="ContactUsFrm_email"]
 ${enquiry_input}    //*[@id="ContactUsFrm_enquiry"]
 
 *** Keywords ***
+Contact site map and contact us footer
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Click Element    xpath=/html/body/div/div[4]/footer/section[2]/div/div[1]/div/ul/li[5]/a
+    Page Should Contain Element    xpath=/html/body/div/div[2]/div/div/div/div/div/div[1]
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Click Element    xpath=/html/body/div/div[4]/footer/section[2]/div/div[1]/div/ul/li[6]/a
+    Page Should Contain Element    xpath=/html/body/div/div[2]/div/div/div/div/div/div[1]
+
 Check site map and verify
     Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
     Click Element    xpath=/html/body/div/div[4]/footer/section[2]/div/div[1]/div/ul/li[6]
@@ -94,5 +102,37 @@ Verify contact us when email input wrong format
     Click Element    ${ContactUsFrm}
     ${text1}=    Get Text    xpath=//*[@id="field_12"]/span/div[2]
     Should Be Equal As Strings    ${text1}    E-Mail Address does not appear to be valid!
+
+Verify contact us when enquiry input below 10 character and another true
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Click Element    xpath=/html/body/div/div[4]/footer/section[2]/div/div[1]/div/ul/li[5]/a
+    Page Should Contain Element    xpath=/html/body/div/div[2]/div/div/div/div/div/div[1]
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Input Text    ${name_input}    ${name_valid}
+    Input Text    ${email_input}    ${email_valid}
+    Input Text    ${enquiry_input}    Test
+    Click Element    ${ContactUsFrm}
+    ${text1}=    Get Text    xpath=//*[@id="field_13"]/span/div[2]
+    Should Be Equal As Strings    ${text1}    Enquiry must be between 10 and 3000 characters!
+
+Generate Long Enquiry
+    ${enquiry}=    Set Variable    ${EMPTY}
+    FOR    ${i}    IN RANGE    3001
+        ${enquiry}=    Set Variable    ${enquiry}${i}
+    END
+    [Return]    ${enquiry}
+
+Verify contact us when enquiry input than 3000 character and another true
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Click Element    xpath=/html/body/div/div[4]/footer/section[2]/div/div[1]/div/ul/li[5]/a
+    Page Should Contain Element    xpath=/html/body/div/div[2]/div/div/div/div/div/div[1]
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
+    Input Text    ${name_input}    ${name_valid}
+    Input Text    ${email_input}    ${email_valid}
+    ${long_enquiry}=    Generate Long Enquiry
+    Input Text    ${enquiry_input}    ${long_enquiry}
+    Click Element    ${ContactUsFrm}
+    ${text1}=    Get Text    xpath=//*[@id="field_13"]/span/div[2]
+    Should Be Equal As Strings    ${text1}    Enquiry must be between 10 and 3000 characters!
 
 
