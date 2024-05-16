@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Module1 - Shop page 
+Documentation     This test suite is to verify search functionality
 Library           SeleniumLibrary
 Resource          ../resources/common.robot
 Resource           ../resources/search/search.robot
