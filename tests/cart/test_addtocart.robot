@@ -46,3 +46,25 @@ Add to cart from homepage bestsellers product out of stock
 Check out of stock
     Check out of stock
 
+
+
+Add to cart from sub category (apparel)
+    Add to cart from sub category    apparel & accessories
+
+Add to cart from sub category (makeup)
+    Add to cart from sub category    makeup
+
+Add to cart from sub category (skincare)
+    Add to cart from sub category    skincare
+
+Add to cart from sub category (fragrance)
+    Add to cart from sub category    fragrance
+
+Add to cart from sub category (men)
+    Add to cart from sub category    men
+
+Add to cart from sub category (hair care)
+    Add to cart from sub category    hair care
+
+Add to cart from sub category (book)
+    Add to cart from sub category    book
