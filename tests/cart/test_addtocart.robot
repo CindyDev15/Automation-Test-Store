@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Module1 - Shop page
+Documentation     Cart
 Test Setup        Opening my browser
 Test Teardown     Closing my browser
 Library           SeleniumLibrary
@@ -32,7 +32,7 @@ Add to cart from homepage specials product with not a number
     Add to cart from homepage specials product with not a number
    
 Add to cart from homepage specials product with a negative number
-    Add to cart from homepage specials product with not a negative number
+    Add to cart from homepage specials product with a negative number
 
 Add to cart from homepage bestsellers product choose options
     Add to cart from homepage bestsellers product choose options
