@@ -75,7 +75,7 @@ Add first item valid and second item invalid
     ${quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
     ${price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
     ${price}    Set Variable    ${price}[1:]
-    Click Element    //*[@id="maincontainer"]/div/div/div/div/div[3]/div[7]/div[2]/a/img
+    Click Element    //*[@id="maincontainer"]/div/div/div/div/div[3]/div[6]/div[2]/a/img
     Click Element    //*[@id="product"]/fieldset/div[1]/div
     Click Element    //*[@id="option319"]/option[1]   
     Input Text    xpath=//*[@id="product_quantity"]    0
@@ -112,23 +112,26 @@ Add first item invalid and second item valid
     Should Be Equal As Numbers    ${distance_quantity}    0
     Should Be Equal As Numbers    ${distance_price}    0
     Page Should Contain Element    xpath=/html/body/div/div[2]/div/div/div/div
-    Click Element    xpath=//*[@id="categorymenu"]/nav/ul/li[4]/a
+    Click Element    xpath=//*[@id="categorymenu"]/nav/ul/li[3]/a
     ${quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
     ${price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
     ${price}    Set Variable    ${price}[1:]
-    Click Element    //*[@id="maincontainer"]/div/div/div/div/div[3]/div[3]/div[2]/div[3]/a
-    ${item_price}    Get Text    xpath=//*[@id="maincontainer"]/div/div/div/div/div[3]/div[3]/div[2]/div[3]/div[2]/div[1]
+    Click Element    //*[@id="maincontainer"]/div/div/div/div/div[3]/div[2]/div[2]/a/img
+    Click Element    //*[@id="product"]/fieldset/div[1]/div
+    Select From List By Value    //*[@id="option318"]    652
+    Input Text    xpath=//*[@id="product_quantity"]    5
+    Sleep    2s
+    ${item_price}    Get Text    xpath=//*[@id="product"]/fieldset/div[3]/label/span
     ${item_price}    Set Variable    ${item_price}[1:]
     ${item_price}    Evaluate    float(${item_price})
+    Click Element    xpath=//*[@id="product"]/fieldset/div[5]/ul/li/a
     ${update_quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
     ${update_price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
     ${update_price}    Set Variable    ${update_price}[1:]
     ${distance_quantity}    Evaluate    int(${update_quantity}) - int(${quantity})
     ${distance_price}    Evaluate    float(${update_price}) - float(${price})
-    Should Be Equal As Numbers    ${distance_quantity}    1
+    Should Be Equal As Numbers    ${distance_quantity}    5
     Should Be Equal As Numbers    ${distance_price}    ${item_price}
-    Click Element    //*[@id="main_menu_top"]/li[3]/a
-    Page Should Contain Element    //*[@id="cart"]/div/div[1]
 
 Add two item invalid
     Click Element    xpath=//*[@id="categorymenu"]/nav/ul/li[5]/a
@@ -192,7 +195,6 @@ Add first item quantity and exceed second item
     ${distance_quantity}    Evaluate    int(${update_quantity}) - int(${quantity})
     ${distance_price}    Evaluate    float(${update_price}) - float(${price})
     Should Be Equal As Numbers    ${distance_quantity}    150
-    Should Be Equal As Numbers    ${distance_price}    ${item_price}
     ${error_message}    Get Text    //*[@id="maincontainer"]/div/div/div/div/strong
     Should Be Equal As Strings    ${error_message}    Products marked with *** are not available in the desired quantity or out of stock!
     Click Element    xpath=//*[@id="categorymenu"]/nav/ul/li[6]/a

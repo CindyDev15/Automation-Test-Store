@@ -15,8 +15,6 @@ ${valid_login_password_1}=    123456
 ${invalid_login_name}=    invalidloginname
 ${invalid_login_password}=    invalidpassword
 
-
-
 *** Test Cases ***
 TC1 - Login with valid credentials
     [Documentation]    Login with valid credentials

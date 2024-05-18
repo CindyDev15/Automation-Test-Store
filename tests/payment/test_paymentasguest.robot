@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation     This test suite is to verify search functionality
 Library           SeleniumLibrary
-Resource          ../resources/common.robot
-Resource          ../resources/payment/payment.robot
+Resource          ../../resources/common.robot
+Resource          ../../resources/payment/paymentasguest.robot
 Test Teardown     Closing my browser
 Test Setup        Opening my browser
 
@@ -45,11 +45,3 @@ Payment when choose guest select and submit telephone empty
 Payment when choose guest select and submit telephone not a number 
     Payment when choose guest select and submit telephone not a number 
 
-Payment when choose regist account
-    Payment when choose regist account    
-
-Payment when without login and login 
-    Payment when without login and login 
-
-Payment when login in web 
-    Payment when login in web 

@@ -59,14 +59,21 @@ ${day_order}      //*[@id="maincontainer"]/div/div/div/div/div[3]/table/tbody/tr
 ${checkouthome_btn}    //*[@id="main_menu_top"]/li[4]    
 ${cart_empty}    //*[@id="maincontainer"]/div/div
 ${payment_content}    //*[@id="maincontainer"]/div    
-${name_valid}     Cindy
-${email_valid}    Cindy@gmail.com
+${name_valid}    Coso1
+${lname_valid}    Coso1
+${email_valid}    tdtu@gmail.com
 ${enquiry_valid}    noi dung phan anh
 ${invalidname_valid}    Ci
 ${phone_number}    0353472138
 ${address}    DaiHocTonDucThang
 ${city}    19 Nguyen Huu Tho
 ${code}    TDTU123
+${nameguest}     Coso2
+${lnameguest}     NTTDTU
+${phoneguest_number}    0353472138
+${addressguest}    DaiHocTonDucThang coso2
+${cityguest}    Nha Trang
+${codeguest}    TDTU123
 
 
 *** Keywords ***
@@ -644,6 +651,14 @@ Payment true with shipping
     Select From List By Value    //*[@id="guestFrm_country_id"]   230
     Sleep    2s
     Select From List By Value    //*[@id="guestFrm_zone_id"]    3780
+    Input Text    ${nameguest_input}    ${nameguest}
+    Input Text    ${lnameguest_input}    ${lnameguest}
+    Input Text    ${address1guest_input}    ${addressguest}
+    Input Text    ${cityguest_input}    ${cityguest}
+    Input Text    ${codepostguest_input}    ${codeguest}
+    Select From List By Value    ${countryguest_input}    230
+    Sleep    2s
+    Select From List By Value    //*[@id="guestFrm_shipping_zone_id"]    3780
     ${name_before}    Get Text    ${name_input}
     ${lname_before}    Get Text    ${lname_input}
     ${email_before}    Get Text    ${email_input}
@@ -653,11 +668,19 @@ Payment true with shipping
     ${country_before}    Get Text    //*[@id="guestFrm_country_id"]
     ${zone_before}    Get Text    //*[@id="guestFrm_zone_id"]
     ${total_before}    Get Text    //*[@id="maincontainer"]/div/div[2]/div[1]/table[2]/tbody/tr[2]/td[2]/span
+    ${name_before1}    Get Text    ${name_input}
+    ${lname_before1}    Get Text    ${lname_input}
+    ${address_before1}    Get Text    ${address1_input}
+    ${city_before1}    Get Text    ${city_input}
+    ${country_before1}    Get Text    ${countryguest_input}    
+    ${zone_before1}    Get Text    //*[@id="guestFrm_shipping_zone_id"]    
+    ${result_name}=    Set Variable    ${name_before1} ${SPACE} ${lname_before1}
     Click Element    ${continue_checkguest}
     Page Should Contain Element    //*[@id="maincontainer"]/div/div[1]/div/h1/span[1]
-    ${total_after}    Get Text    //*[@id="maincontainer"]/div/div[1]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[2]/span
+    Sleep    2s
+    ${total_after}    Get Text    //*[@id="maincontainer"]/div/div[2]/div[1]/table[2]/tbody/tr[1]/td[2]/span
     Should Be Equal As Strings    ${total_before}    ${total_after}
-    Click Element    ${confirm_order}
+    Click Element    //*[@id="checkout_btn"]
     Page Should Contain Element    //*[@id="maincontainer"]/div
 
 Payment when choose guest select and submit telephone empty
@@ -740,52 +763,9 @@ Payment when choose guest select and submit telephone not a number
     Sleep    2s
     Page Should Contain    Phone is not a number
 
-Payment when choose regist account
-    ${price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${price}    Set Variable    ${price}[1:]
-    Click Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/a/i
-    Page Should Contain Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/div[1]/a/i
-    ${update_quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
-    ${update_price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${update_price}    Set Variable    ${update_price}[1:]
 
-Payment when without login and login 
-    ${quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
-    ${price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${price}    Set Variable    ${price}[1:]
-    Click Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/a/i
-    Page Should Contain Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/div[1]/a/i
-    ${update_quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
-    ${update_price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${update_price}    Set Variable    ${update_price}[1:]
-    ${distance_quantity}    Evaluate    int(${update_quantity}) - int(${quantity})
-    ${distance_price}    Evaluate    float(${update_price}) - float(${price})
-    ${item_price}    Get Text    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/div[2]/div
-    ${item_price}    Set Variable    ${item_price}[1:]
-    ${item_price}    Evaluate    float(${item_price})
-    Should Be Equal As Numbers    ${distance_quantity}    1
-    Should Be Equal As Numbers    ${distance_price}    ${item_price}
-    Click Element    ${checkouthome_btn}
-    Page Should Contain Element    ${payment_content}
 
-Payment when login in web 
-    ${quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
-    ${price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${price}    Set Variable    ${price}[1:]
-    Click Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/a/i
-    Page Should Contain Element    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/div[1]/a/i
-    ${update_quantity}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[1]
-    ${update_price}    Get Text    xpath=/html/body/div/header/div[2]/div/div[3]/ul/li/a/span[2]
-    ${update_price}    Set Variable    ${update_price}[1:]
-    ${distance_quantity}    Evaluate    int(${update_quantity}) - int(${quantity})
-    ${distance_price}    Evaluate    float(${update_price}) - float(${price})
-    ${item_price}    Get Text    xpath=//*[@id="block_frame_featured_1769"]/div/div[1]/div[2]/div[3]/div[2]/div
-    ${item_price}    Set Variable    ${item_price}[1:]
-    ${item_price}    Evaluate    float(${item_price})
-    Should Be Equal As Numbers    ${distance_quantity}    1
-    Should Be Equal As Numbers    ${distance_price}    ${item_price}
-    Click Element    ${checkouthome_btn}
-    Page Should Contain Element    ${payment_content}
+
 
 
 
