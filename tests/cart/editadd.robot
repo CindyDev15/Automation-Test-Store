@@ -1,7 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           Collections
-Library           RequestsLibrary
 Library           BuiltIn
 Library           String
 
