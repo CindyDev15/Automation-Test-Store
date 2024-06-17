@@ -1,4 +1,4 @@
-# Restaurants-Analysis-And-Visualization
+# Automation-Test-Store
 ![example](result.png)
 ---
 Testing a project on a site like Automation Test Store can provide valuable insights and experiences that can enhance your skills as a QA Software Tester. Here are some key takeaways you might gain from such a project:
